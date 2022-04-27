@@ -19,5 +19,7 @@
     <string name="percent">%</string>
     <string name="value">+/-</string>
     <string name="point">.</string>
+    <string name="go_over">GO OVER</string>
+
 
 </resources>
