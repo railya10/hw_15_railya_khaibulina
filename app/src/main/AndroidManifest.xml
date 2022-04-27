@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hw_15">
         <activity
-            android:resizeableActivity="true"
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:resizeableActivity="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

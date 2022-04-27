@@ -3,20 +3,23 @@ package com.example.hw_15;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
 
 
-public class MainActivity<pivate> extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private double firstVar;
     private double secondVar;
     private boolean isOperationClick;
     private String operation;
+    private Button button;
 
 
     @Override
@@ -25,6 +28,15 @@ public class MainActivity<pivate> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text_view);
+        button = findViewById(R.id.btn_go);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                intent.putExtra("Key", textView.getText().toString());
+                startActivity(intent);
+            }
+        });
     }
 
     public void setNumber(String number) {
@@ -39,6 +51,7 @@ public class MainActivity<pivate> extends AppCompatActivity {
     }
 
     public void onNumberClick(View view) {
+        button.setVisibility(View.INVISIBLE);
         switch (view.getId()) {
             case R.id.btn_one:
                 setNumber("1");
@@ -82,10 +95,9 @@ public class MainActivity<pivate> extends AppCompatActivity {
     }
 
     public void onOperationClick(View view) {
-
+        button.setVisibility(View.INVISIBLE);
         switch (view.getId()) {
             case R.id.btn_plus:
-
                 firstVar = Double.parseDouble(textView.getText().toString());
                 isOperationClick = true;
                 operation = "+";
@@ -123,6 +135,7 @@ public class MainActivity<pivate> extends AppCompatActivity {
                 break;
 
             case R.id.btn_equal:
+                button.setVisibility(View.VISIBLE);
                 double result = 0;
                 secondVar = Integer.parseInt(textView.getText().toString());
                 switch (operation) {
